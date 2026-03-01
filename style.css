@@ -27,6 +27,11 @@ h3 {
     margin:0;
 }
 
+h3 {
+    font-size: 1rem;
+    margin:0;
+}
+
 p{
     margin: 0;
 }
@@ -140,6 +145,7 @@ nav {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    transition: all 0.2s ease;
 }
 
 .sidebar-item span{
@@ -148,7 +154,8 @@ nav {
 
 .sidebar-item:hover {
     cursor: pointer;
-    background-color: #ededed;
+    background-color: #6e69d3b7;
+    color: white;
 }
 
 .sidebar-item.active {
@@ -185,6 +192,7 @@ nav {
     border-radius: 18px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     min-width: 0;
+    transition: all 0.2s ease;
 }
 
 .stat-card {
@@ -198,6 +206,7 @@ nav {
     grid-template-columns: 3fr 1fr;
     grid-template-rows: 1fr 2fr;
     align-items: center;
+    transition: all 0.2s ease;
 }
 
 #promedio {
@@ -255,18 +264,35 @@ nav {
 }
 
 .container ul {
+    display: flex;
+    flex-direction: column;
     list-style-type: none;
     margin: 0;
     padding: 0;
+    gap: 12px;
 }
 
 .scroll-container {
+    max-height: 480px;
     width: 100%;
-    height: 200px;
-    overflow-y: scroll;
-    scrollbar-width: thin;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    scrollbar-color: #b3b3b390 #b3b3b300;
 }
 
+.progress-bar {
+    display: flex;
+    justify-content: center;
+    min-width: fit-content;
+    margin-top: 20px;
+}
+
+.progress-bar img {
+    width: 100%;
+    max-width: 340px;
+}
 
 .container li {
     display: flex;
@@ -276,27 +302,86 @@ nav {
 
 .checkbox[type="checkbox"] {
   appearance: none;
-  width: 20px;
+  min-width: 20px;
   height: 20px;
-  border: none;
-  background-color:#c4c4c4;
   border-radius: 4px;
+  background-color: #c4c4c4;
   cursor: pointer;
+  position: relative;
+  display: grid;
+  place-content: center;
+}
+
+.checkbox[type="checkbox"]::after {
+  content: "check";
+  font-family: "Material Symbols Outlined";
+  font-size: 18px;
+  color: white;
+  opacity: 0;
+  transition: all 0.2s ease;
 }
 
 .checkbox[type="checkbox"]:checked {
   background-color: #303030;
-  border-color:  #303030;
-  color: white;
 }
-.assignment {
+
+.assignment .checkbox[type="checkbox"]:checked {
+  background-color: #ffffff;
+}
+
+.assignment .checkbox[type="checkbox"]::after {
+  color: #4655c8;
+}
+
+.checkbox[type="checkbox"]:checked::after {
+  opacity: 1;
+}
+.assignment:has(input:checked) {
+    background: linear-gradient(90deg,#4655c8 0%, #8271c5 100%);
+    color: white;
+}
+
+.assignment, .course {
     display: flex;
     align-items: center;
-    height: 60px;
+    justify-content: space-between;
+    height: auto;
     background-color: #eeeeee;
     border-radius: 16px;
     padding: 10px;
+    transition: all 0.4s ease;
 }
+
+.assignment-name, .course-info {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 12px;
+
+}
+
+.assignment-info {
+    text-align: center;
+}
+
+.assignment-info p, .course-info p {
+    color: #B3B3B3;
+}
+
+.course-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+}
+
+.course-info h4 {
+    font-weight: 300;
+}
+
+.course-grade {
+    color:#4f4f4f
+}
+
 @media (max-width: 900px) {
 
   .card-grid {
