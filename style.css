@@ -1,7 +1,7 @@
 body {
     font-family: "DM Sans", Helvetica, sans-serif;
     display: grid;
-    grid-template-columns: 50px 1fr;
+    grid-template-columns: auto 1fr;
     grid-template-rows: auto 1fr;
     grid-template-areas:
     "nav nav"
@@ -61,7 +61,9 @@ nav {
 }
 
 .search-bar {
-    width: 140px;
+    min-width: 0;
+    width: 100%;
+    max-width: 140px;
     height: 30px;
     border-radius: 16px;
     padding: 0 10px;
@@ -91,6 +93,7 @@ nav {
 .search-bar:has(input:focus) {
     border: 1px solid #6F69D3;
     color: #6F69D3;
+    transition: all ease-in 0.2s;
 }
 
 .date, .profile {
@@ -106,8 +109,8 @@ nav {
 }
 
 .profile img {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 100%;
 }
 
@@ -181,6 +184,7 @@ nav {
     padding: 24px;
     border-radius: 18px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    min-width: 0;
 }
 
 .stat-card {
@@ -188,8 +192,8 @@ nav {
     padding: 24px;
     border-radius: 18px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    min-width: 140px;
-    height: 100px;
+    min-width: 0;
+    height: 80px;
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-template-rows: 1fr 2fr;
@@ -229,6 +233,10 @@ nav {
     min-width: fit-content;
 }
 
+#calendar img {
+    width: 100%;
+    max-width: 340px;
+}
 
 .container {
     display: flex;
@@ -304,9 +312,21 @@ nav {
 
 
 @media(max-width: 600px){
+    .profile-name p {
+        display: none;
+    }
     .card-grid{
         display: flex;
         flex-direction: column;
+    }
+
+    .card {
+    min-width: 0;
+    }  
+
+    .stat-card {
+        min-width: 0;
+        height: 60px;
     }
 
     .date {
